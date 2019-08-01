@@ -4,11 +4,10 @@ connection: "thelook"
 include: "*.view"
 
 datagroup: won_bug_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+  sql_trigger: SELECT FLOOR((TIMESTAMP_DIFF(CURRENT_TIMESTAMP(),'1970-01-01 00:00:00',SECOND)) / (0.1*60*60));;
   max_cache_age: "1 hour"
 }
 
-persist_with: won_bug_default_datagroup
 
 explore: connection_reg_r3 {}
 
