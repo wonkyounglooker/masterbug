@@ -4,7 +4,8 @@ connection: "thelook"
 include: "*.view"
 
 datagroup: won_bug_default_datagroup {
-  sql_trigger: SELECT FLOOR((TIMESTAMP_DIFF(CURRENT_TIMESTAMP(),'1970-01-01 00:00:00',SECOND)) / (0.1*60*60));;
+  sql_trigger: SELECT FLOOR(UNIX_TIMESTAMP() / (0.1*60*60))
+  FROM demo_db.users;;
   max_cache_age: "1 hour"
 }
 
