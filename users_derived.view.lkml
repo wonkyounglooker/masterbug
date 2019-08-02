@@ -1,7 +1,10 @@
 view: users_derived {
   derived_table: {
-    sql: SELECT * FROM demo_db.users ;;
+    sql:
+    -- won testing
+    SELECT * FROM demo_db.users ;;
     datagroup_trigger: won_bug_default_datagroup
+    indexes: ["id"]
   }
 
   dimension: id {
