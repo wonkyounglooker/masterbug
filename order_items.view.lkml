@@ -7,6 +7,15 @@ view: order_items {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: play_call {
+    type: string
+    sql: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" ;;
+    html:
+          <audio controls preload="metadata" style="width:100%; min-width: 300px;">
+            <source src="{{ value }}" type="audio/mp3" />
+          </audio> ;;
+  }
+
   dimension: inventory_item_id {
     type: number
     # hidden: yes
