@@ -2,7 +2,7 @@ connection: "thelook"
 
 # include all the views
 include: "*.view"
-include: "WonLookMLDashboard.dashboard"
+include: "/LookML_dashboards/WonLookMLDashboard.dashboard"
 
 datagroup: won_bug_default_datagroup {
   sql_trigger: SELECT FLOOR(UNIX_TIMESTAMP() / (0.1*60*60))
