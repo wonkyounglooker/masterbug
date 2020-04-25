@@ -10,8 +10,6 @@ datagroup: won_bug_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-aggregate_awareness: yes
-
 explore: connection_reg_r3 {}
 
 explore: derived_test_table_3_20190510 {}
