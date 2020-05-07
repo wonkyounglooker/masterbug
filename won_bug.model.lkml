@@ -10,6 +10,11 @@ datagroup: won_bug_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+access_grant: can_see_team_lead_payout {
+  user_attribute: can_see_this
+  allowed_values: ["Head"]
+}
+
 explore: connection_reg_r3 {}
 
 explore: derived_test_table_3_20190510 {}
