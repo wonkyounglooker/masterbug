@@ -1,25 +1,62 @@
 view: events {
   sql_table_name: demo_db.events ;;
 
+  dimension: browser {
+    view_label: "Visitors"
+    sql: ${TABLE}.browser ;;
+  }
+
+  measure: unique_visitors {
+    type: count_distinct
+    description: "Uniqueness determined by IP Address and User Login"
+    view_label: "Visitors"
+    sql: ${ip} ;;
+    drill_fields: [visitors*]
+  }
+
+  dimension: ip {
+    label: "IP Address"
+    view_label: "Visitors"
+    sql: ${TABLE}.user_id ;;
+  }
+
+  set: visitors {
+    fields: [ip, os, browser, user_id, count]
+  }
+
+  dimension: os {
+    label: "Operating System"
+    view_label: "Visitors"
+    sql: ${TABLE}.os ;;
+  }
+
+
   dimension: id {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
   }
 
-  dimension_group: created {
+#   dimension_group: created {
+#     type: time
+#     timeframes: [
+#       raw,
+#       time,
+#       date,
+#       week,
+#       month,
+#       quarter,
+#       year
+#     ]
+#     sql: ${TABLE}.created_at ;;
+#   }
+
+  dimension_group: event {
     type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
+#     timeframes: [time, date, hour, time_of_day, hour_of_day, week, day_of_week_index, day_of_week]
     sql: ${TABLE}.created_at ;;
   }
+
 
   dimension: type_id {
     type: number

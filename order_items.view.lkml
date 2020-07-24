@@ -7,6 +7,14 @@ view: order_items {
     sql: ${TABLE}.id ;;
   }
 
+  dimension_group: created {
+    type: time
+    timeframes: [time, hour, date, week, month, year, hour_of_day, day_of_week, month_num, month_name, raw, week_of_year]
+
+
+    sql: ${TABLE}.returned_at ;;
+    convert_tz: no
+  }
   dimension: play_call {
     type: string
     sql: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" ;;

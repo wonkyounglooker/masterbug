@@ -12,6 +12,10 @@ view: users {
     sql: ${TABLE}.age ;;
   }
 
+  dimension: traffic_source {
+    sql: ${TABLE}.traffic_source ;;
+  }
+
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
@@ -69,6 +73,7 @@ view: users {
 
   measure: count {
     type: count
+    required_access_grants: [can_see_team_lead_payout]
     drill_fields: [detail*]
   }
 
