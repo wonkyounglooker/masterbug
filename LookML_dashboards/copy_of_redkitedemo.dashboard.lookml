@@ -2,7 +2,7 @@
 ######################################
 ########## Web Analytics##############
 #######################################
-- dashboard: copy_of_redkitdemo
+- dashboard: copy_of_redkitedemo
   title: Web Analytics
   layout: newspaper
   query_timezone: user_timezone
