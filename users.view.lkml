@@ -1,6 +1,10 @@
 view: users {
   sql_table_name: demo_db.users ;;
 
+  parameter: state_parameter {
+    type: string
+  }
+
   dimension: id {
     primary_key: yes
     type: number
