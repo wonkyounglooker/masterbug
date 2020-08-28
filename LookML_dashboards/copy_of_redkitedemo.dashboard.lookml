@@ -53,23 +53,23 @@
 #     height: 3
 
 
-  - title: Total Converted Visitors
-    name: Total Converted Visitors
-    model: won_bug
-    explore: order_items
-    type: single_value
-    fields: [users.count]
-    sorts: [users.count desc]
-    limit: 500
-#     font_size: medium
-#     text_color: black
+#   - title: Total Converted Visitors
+#     name: Total Converted Visitors
+#     model: won_bug
+#     explore: order_items
+#     type: single_value
+#     fields: [users.count]
+#     sorts: [users.count desc]
+#     limit: 500
+# #     font_size: medium
+# #     text_color: black
 #     listen:
-#       Traffic Source: users.traffic_source
-#       Date: order_items.created_date
-#     row: 0
-#     col: 11
-#     width: 5
-#     height: 3
+#       - Traffic Source: users.traffic_source
+#       - Date: order_items.created_date
+# #     row: 0
+# #     col: 11
+# #     width: 5
+# #     height: 3
 
   filters:
   - name: Browser

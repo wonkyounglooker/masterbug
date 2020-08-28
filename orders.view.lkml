@@ -26,6 +26,11 @@ view: orders {
     sql: ${TABLE}.status ;;
   }
 
+  dimension: status_complete {
+    type: yesno
+    sql: ${status}="complete" ;;
+  }
+
   dimension: user_id {
     type: number
     # hidden: yes
