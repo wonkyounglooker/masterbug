@@ -77,7 +77,6 @@ view: users {
 
   measure: count {
     type: count
-    required_access_grants: [can_see_team_lead_payout]
     drill_fields: [detail*]
   }
 

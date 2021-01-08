@@ -76,7 +76,7 @@ view: events {
 
   measure: count {
     type: count
-    required_access_grants: [can_see_team_lead_payout]
+    # required_access_grants: [can_see_team_lead_payout]
 
     drill_fields: [id, users.first_name, users.id, users.last_name]
   }

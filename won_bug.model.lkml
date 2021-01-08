@@ -70,6 +70,15 @@ explore: orders {
   }
 }
 
+explore: users_bug_primary_key  {
+  view_name: users
+  join: orders_wrong_primary {
+    type: left_outer
+    sql_on: ${orders_wrong_primary.user_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
+}
+
 explore: products {}
 
 explore: schema_migrations {}

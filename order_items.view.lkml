@@ -55,6 +55,22 @@ view: order_items {
     sql: ${TABLE}.sale_price ;;
   }
 
+  measure: trial_subscribers {
+    type: sum
+    sql: ${products.retail_price}  ;;
+  }
+
+  measure: paid_subscribers {
+    type: sum
+    sql: ${TABLE}.sale_price ;;
+  }
+
+  measure: total_subscribers {
+    label: "Daily Total Subscribers"
+    type: number
+    sql: ${trial_subscribers} + ${paid_subscribers} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
