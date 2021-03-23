@@ -37,6 +37,16 @@ explore: inventory_items {
 }
 
 explore: order_items {
+  aggregate_table: sales_monthly {
+    materialization: {
+      datagroup_trigger: won_bug_default_datagroup
+    }
+    query: {
+      dimensions: [orders.created_month]
+      measures: [order_items.paid_subscribers]
+    }
+  }
+
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;

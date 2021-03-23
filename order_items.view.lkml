@@ -1,6 +1,7 @@
 view: order_items {
   sql_table_name: demo_db.order_items ;;
 
+
   dimension: id {
     primary_key: yes
     type: number
@@ -144,4 +145,49 @@ view: order_items {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
   }
+
+  measure: T_0{
+    group_label: "Markout per Million"
+    label: "0"
+    type: number
+    sql: (${Value_T_0})/NULLIF((${total_usd_amount}),0);;
+    value_format_name: value_formatting
+    # drill_fields: [trade_id, symbol,usd_amount]
+  }
+
+  measure: Value_T_0 {
+    group_label: "Value per Million"
+    label: "Value 0"
+    type: sum
+    sql: -1 * ( ${usd_amount} * ${mi_maas_usd_0} ) ;;
+    value_format_name: value_per_million_formatting
+    # drill_fields: [trade_id, symbol,usd_amount]
+  }
+
+  measure: total_usd_amount {
+    type: sum
+    description: "The total amount of selected trades"
+    sql: ${usd_amount} ;;
+    value_format_name: usd_0
+  }
+
+  dimension: mi_maas_usd_0 {
+    group_label: "MAAS"
+    type: number
+    # sql: ${TABLE}."MI_MAAS_USD_0" ;;
+    sql: ${TABLE}.sale_price ;;
+    value_format: "#,##0;(#,##0)"
+    label: "MAAS 0s"
+    hidden: yes
+  }
+
+  dimension: usd_amount {
+    type: number
+    # sql: ${TABLE}."USD_AMOUNT" ;;
+    sql: ${TABLE}.order_id ;;
+    value_format: "#,##0;(#,##0)"
+    hidden: yes
+  }
+
+
 }

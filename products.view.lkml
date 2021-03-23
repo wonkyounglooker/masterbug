@@ -46,4 +46,15 @@ view: products {
     type: count
     drill_fields: [id, item_name, inventory_items.count]
   }
+
+  dimension: count_dimensions  {
+    sql:
+      {% assign sum = 0 %}
+      {% if products.department._in_query %}
+        {% assign sum = sum | plus: 1 %}
+      {% elsif products.id._in_query %}
+        {% assign sum = sum | plus: 1 %}
+      {% endif %}
+        {{ sum }};;
+  }
 }
