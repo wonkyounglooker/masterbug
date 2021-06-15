@@ -36,6 +36,52 @@ view: orders {
   }
 
 
+  dimension: eaglemanagerlevel {
+    label: "EM Level"
+    case: {
+      when: {
+        sql: ${id} = '0' ;;
+        label: "Not Qualified"
+      }
+      when: {
+        sql: ${id} = '1' ;;
+        label: "Eagle Manager"
+      }
+      when: {
+        sql: ${id} = '2' ;;
+        label: "Senior Eagle Manager"
+      }
+      when: {
+        sql: ${id} = '3' ;;
+        label: "Soaring Eagle Manager"
+      }
+      when: {
+        sql: ${id} = '4' ;;
+        label: "Sapphire Eagle Manager"
+      }
+      when: {
+        sql: ${id} = '5' ;;
+        label: "Diamond Sapphire Eagle Manager"
+      }
+      when: {
+        sql: ${id} = '6' ;;
+        label: "Diamond Eagle Manager"
+      }
+      when: {
+        sql: ${id} = '7' ;;
+        label: "Double Diamond Eagle Manager"
+      }
+      when: {
+        sql: ${id} = '8' ;;
+        label: "Triple Diamond Eagle Manager"
+      }
+      when: {
+        sql: ${id} = '9' ;;
+        label: "Diamond Centurion Eagle Manager"
+      }
+    }
+  }
+
   dimension: transit_day_seven_tier {
     label: "Standard Transit Day 7+ Tier"
     description: "The number of business days it should take to move a shipment broken out by tiers"
@@ -192,4 +238,19 @@ view: orders {
     type: count
     drill_fields: [id, users.first_name, users.id, users.last_name, order_items.count]
   }
+
+  dimension: label_status {
+    type: string
+    sql: ${TABLE}.status ;;
+    label: "{% if _view._name == 'dimensions_1st' %} 1st
+    {% elsif _view._name == 'dimensions_2nd' %} 2nd
+    {% endif %}"
+  }
+  # dimension: another_label_status {
+  #   type: string
+  #   sql: ${TABLE}.status ;;
+  #   label: "{% if _view._name == 'dimensions_1st' %} 1st
+  #   {% elsif _view._name == 'dimensions_2nd' %} 2nd
+  #   {% endif %}"
+  # }
 }

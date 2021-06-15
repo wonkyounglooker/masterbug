@@ -28,6 +28,8 @@ explore: events {
   }
 }
 
+explore: orders_extended {}
+
 explore: inventory_items {
   join: products {
     type: left_outer
@@ -98,6 +100,23 @@ explore: user_data {
     type: left_outer
     sql_on: ${user_data.user_id} = ${users.id} ;;
     relationship: many_to_one
+  }
+}
+
+explore: orders2 {
+  from: orders
+  join: dimensions_1st {
+    from: orders
+    sql_on: ${orders2.id} = ${dimensions_1st.id} ;;
+  }
+  join: dimensions_2nd {
+    from: orders
+    sql_on: ${orders2.id} = ${dimensions_2nd.id} ;;
+  }
+  join: users {
+    relationship: many_to_one
+    sql_on: ${users.id} = ${orders2.user_id} ;;
+    sql_where: 1=1 ;;
   }
 }
 
