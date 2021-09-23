@@ -4,6 +4,7 @@ connection: "thelook"
 include: "*.view"
 include: "/LookML_dashboards/*.dashboard"
 
+explore: csv_dt {}
 
 datagroup: won_bug_default_datagroup {
   sql_trigger: SELECT FLOOR(UNIX_TIMESTAMP() / (0.1*60*60))

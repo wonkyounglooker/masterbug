@@ -80,6 +80,13 @@ view: users {
     drill_fields: [detail*]
   }
 
+  measure: sum {
+    type: sum
+    sql: ${age} ;;
+    # html:{{ state._value }}  ;;
+
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
